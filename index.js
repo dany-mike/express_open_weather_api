@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require("cors");
 
+const PORT = process.env.PORT || 3000
+
 const app = express()
 const port = 3000
 
@@ -17,6 +19,6 @@ const citiesRoute = require('./routes/cities.route');
 
 app.use('/cities', citiesRoute);
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`)
 })
