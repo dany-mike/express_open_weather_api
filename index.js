@@ -7,9 +7,23 @@ const app = express()
 const port = 3000
 
 app.use(express.json());
-app.use(cors({
-  origin: `*`
-}));
+
+if (process.env.NODE_ENV === "development") {
+  console.log('development')
+  app.use(
+    cors({
+      origin: `http://localhost:8080`
+    })
+  );
+}
+
+if (process.env.NODE_ENV === "production") {
+  app.use(
+    cors({
+      origin: `https://vue-workshop-front.herokuapp.com/`
+    })
+  );
+}
 
 app.get('/', (req, res) => {
   res.send('Root endpoint')
