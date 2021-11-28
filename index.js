@@ -9,7 +9,6 @@ const port = 3000
 app.use(express.json());
 
 if (process.env.NODE_ENV === "development") {
-  console.log('development')
   app.use(
     cors({
       origin: `http://localhost:8080`
