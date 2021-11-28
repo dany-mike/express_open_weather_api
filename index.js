@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "development") {
 if (process.env.NODE_ENV === "production") {
   app.use(
     cors({
-      origin: `https://vue-workshop-front.herokuapp.com/`
+      origin: `https://vue-workshop-front.herokuapp.com`
     })
   );
 }
