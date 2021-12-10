@@ -1,10 +1,9 @@
+const path = require("path");
 const fs = require('fs');
 
 const cityController = {
   getCityByPostalCode: async (req, res) => {
-    const postalCodesData = './data/postal-codes.json'
-
-    await fs.readFile(postalCodesData, 'utf-8', (err, postalCodes) => {
+    await fs.readFile(path.resolve('src', 'data', 'postal-codes.json'), 'utf-8', (err, postalCodes) => {
       if (err) {
         throw err;
       }
