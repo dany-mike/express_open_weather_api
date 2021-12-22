@@ -8,8 +8,8 @@ router.get('/forecast/:city', getHourlyForecastByCityName);
 
 router.get('/forecast/daily/:city/:time', getDailyForecastByCityNameAndTime);
 
-router.get('/current/:zip', getCurrentWeatherByPostalCode)
+router.get('/current-zip/:zip', getCurrentWeatherByPostalCode)
 
-router.get('/forecast/:zip', getWeatherForecastByPostalCode)
+router.get('/forecast-zip/:zip', getWeatherForecastByPostalCode)
 
 module.exports = router;
