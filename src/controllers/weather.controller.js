@@ -1,6 +1,22 @@
 const openWeather = require('../services/openWeather.service.js')
 
 const cityController = {
+  getCurrentWeatherByPostalCode: async (req, res) => {
+    try {
+      const response = await openWeather.get(`/weather?zip=${req.params.zip},fr&appid=${process.env.OPEN_WEATHER_API_KEY}&units=metric`)
+      res.json(response)
+    } catch(err) {
+        res.json({response: err})
+    }
+  },
+  getWeatherForecastByPostalCode: async (req, res) => {
+    try {
+      const response = await openWeather.get(`/forecast?zip=${req.params.zip}&units=metric&appid=${process.env.OPEN_WEATHER_API_KEY}`)
+      res.json(response)
+    } catch(err) {
+        res.json({response: err})
+    }
+  },
   getCurrentWeatherByCityName: async (req, res) => {
     try {
       const response = await openWeather.get(`/weather?q=${req.params.city}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=metric`)
