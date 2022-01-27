@@ -3,6 +3,8 @@ const fs = require('fs');
 
 const cityController = {
   getCityByPostalCode: async (req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=86400');
+
     await fs.readFile(path.resolve('src', 'data', 'postal-codes.json'), 'utf-8', (err, postalCodes) => {
       if (err) {
         throw err;

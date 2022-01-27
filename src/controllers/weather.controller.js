@@ -3,6 +3,7 @@ const openWeather = require('../services/openWeather.service.js')
 const cityController = {
   getCurrentWeatherByPostalCode: async (req, res) => {
     try {
+      res.setHeader('Cache-Control', 'public, max-age=86400');
       const response = await openWeather.get(`/weather?zip=${req.params.zip},fr&appid=${process.env.OPEN_WEATHER_API_KEY}&units=metric`)
       res.json(response)
     } catch(err) {
@@ -10,6 +11,7 @@ const cityController = {
     }
   },
   getWeatherForecastByPostalCode: async (req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=86400');
     try {
       const response = await openWeather.get(`/forecast?zip=${req.params.zip}&units=metric&appid=${process.env.OPEN_WEATHER_API_KEY}`)
       res.json(response)
@@ -18,6 +20,7 @@ const cityController = {
     }
   },
   getCurrentWeatherByCityName: async (req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=86400');
     try {
       const response = await openWeather.get(`/weather?q=${req.params.city}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=metric`)
       res.json(response)
@@ -26,6 +29,7 @@ const cityController = {
     }
   },
   getHourlyForecastByCityName: async (req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=86400');
     try {
       const response = await openWeather.get(`/forecast?q=${req.params.city}&units=metric&appid=${process.env.OPEN_WEATHER_API_KEY}`)
       res.json(response)
@@ -34,6 +38,7 @@ const cityController = {
     }
   },
   getDailyForecastByCityNameAndTime: async (req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=86400');
     try {
       const response = await openWeather.get(`/forecast?q=${req.params.city}&units=metric&appid=${process.env.OPEN_WEATHER_API_KEY}`)
       const formattedResponse = response.list.filter((el) => {
