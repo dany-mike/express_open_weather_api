@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { getCurrentWeatherByCityName, getHourlyForecastByCityName, getDailyForecastByCityNameAndTime, getCurrentWeatherByPostalCode, getWeatherForecastByPostalCode, getCurrentWeatherByLatAndLon, getWeatherForecastByLatAndLon } = require('../controllers/weather.controller.js');
+const { getCurrentWeatherByCityName, getHourlyForecastByCityName, getDailyForecastByCityNameAndTime, getCurrentWeatherByPostalCode, getWeatherForecastByPostalCode, getCurrentWeatherByLatAndLon } = require('../controllers/weather.controller.js');
 
 router.get('/current/:city', getCurrentWeatherByCityName);
 
