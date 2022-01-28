@@ -1,6 +1,6 @@
 const openWeather = require('../services/openWeather.service.js')
 
-const cityController = {
+const weatherController = {
   getCurrentWeatherByPostalCode: async (req, res) => {
     try {
       res.setHeader('Cache-Control', 'public, max-age=86400');
@@ -48,7 +48,16 @@ const cityController = {
     } catch(err) {
         res.json({response: err})
     }
+  },
+  getCurrentWeatherByLatAndLon: async (req, res) => {
+    try {
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      const response = await openWeather.get(`/weather?lat=${req.params.lat}&lon=${req.params.lon}&units=metric&appid=${process.env.OPEN_WEATHER_API_KEY}`)
+      res.json(response)
+    } catch(err) {
+      res.json({response: err})
+    }
   }
 }
 
-module.exports = cityController;
+module.exports = weatherController;
